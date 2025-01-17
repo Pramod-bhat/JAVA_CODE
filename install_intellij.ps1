@@ -1,4 +1,5 @@
-# Save this script as `install_intellij.ps1`
+# Save this script as `install_intellij.ps1` 
+#commenting this line create a PR
 
 # Define IntelliJ IDEA version and download URL
 $version = "2023.2"  # Replace with the desired version
