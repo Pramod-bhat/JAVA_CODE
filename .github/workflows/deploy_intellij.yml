@@ -1,0 +1,23 @@
+name: Deploy IntelliJ IDEA
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed  # Trigger when the pull request is merged (closed)
+
+jobs:
+  deploy:
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main' && github.event.pull_request.head.ref == 'feature-release'
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Deploy IntelliJ IDEA
+      run: |
+        $PSExecPath = "install_intellij.ps1"
+        Write-Host "Executing IntelliJ IDEA installation script..."
+        powershell -ExecutionPolicy Bypass -File $PSExecPath
