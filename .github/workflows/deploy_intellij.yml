@@ -5,12 +5,12 @@ on:
     branches:
       - main
     types:
-      - closed  # Trigger when the pull request is merged (closed)
+      - closed
 
 jobs:
   deploy:
     if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main' && github.event.pull_request.head.ref == 'feature-release'
-    runs-on: windows-latest
+    runs-on: self-hosted  # Use the self-hosted runner
 
     steps:
     - name: Checkout repository
